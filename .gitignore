@@ -180,6 +180,10 @@ cython_debug/
 Icon
 
 
+# Django
+mysite/static
+
+
 # Thumbnails
 ._*
 
