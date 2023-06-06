@@ -32,10 +32,10 @@ if not IN_PROD:
 
 if IN_PROD:
 	ALLOWED_HOSTS = [
-    'django-test.toolforge.org',
+    '.toolforge.org',
 	]
 else:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
 
 # Application definition
 
