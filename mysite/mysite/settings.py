@@ -23,13 +23,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-d3_p6*fhgqf3pgwh2c2af%oadw#9$c7(mro_tal)q3%rgmws2b')
 
+IN_PROD = int(os.environ.get('PROD', 1))
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if not IN_PROD:
+    DEBUG = True
 
-ALLOWED_HOSTS = [
+
+if IN_PROD:
+	ALLOWED_HOSTS = [
     'django-test.toolforge.org',
-]
-
+	]
+else:
+    ALLOWED_HOSTS = []
 
 # Application definition
 
