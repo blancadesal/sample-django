@@ -133,7 +133,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-DATA_DIR = os.environ.get('TOOL_DATA_DIR', BASE_DIR)
+DATA_DIR = '/data/project/django-test' if IN_PROD else BASE_DIR
 
 STATIC_URL = '/static/'
 STATIC_ROOT = DATA_DIR / 'static'
