@@ -88,7 +88,7 @@ if IN_PROD:
 	DATABASES = {
 		'default': {
 			'ENGINE': 'django.db.backends.sqlite3',
-			'NAME': 'sqlite:///data/project/django-test/db.sqlite3',
+			'NAME': '/data/project/django-test/db.sqlite3',
 		}
 	}
 else:
