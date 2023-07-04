@@ -21,9 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-d3_p6*fhgqf3pgwh2c2af%oadw#9$c7(mro_tal)q3%rgmws2b')
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
-IN_PROD = int(os.environ.get('PROD', 1))
+IN_PROD = int(os.environ["PROD"])
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IN_PROD:
@@ -133,7 +133,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-# DATA_DIR = Path('/data/project/django-test') if IN_PROD else BASE_DIR
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
