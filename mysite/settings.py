@@ -18,7 +18,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # The tool's home dir on Toolforge. This dir is available to the application at runtime, but not during the build.
-TOOL_DATA_DIR = os.environ.get('TOOL_DATA_DIR', BASE_DIR)
+TOOL_DATA_DIR = Path(os.environ.get('TOOL_DATA_DIR', BASE_DIR))
 
 
 # Quick-start development settings - unsuitable for production
