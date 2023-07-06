@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import secrets
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,10 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+# Django requires a unique secret key for each Django app, that is used by several of its
+# security features. To simplify initial setup (without hardcoding the secret in the source
+# code) we set this to a random value every time the app starts. However, this will mean many
+# Django features break whenever an app restarts (for example, sessions will be logged out).
+# In your production apps you should set the `DJANGO_SECRET_KEY` env var explicitly.
+# Make sure to use a long unique value, like you would for a password. See:
+# https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECRET_KEY
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = None
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    default=secrets.token_urlsafe(nbytes=64),
+)
 
-IN_PROD = 0
+IN_PROD = int(os.environ.get("PROD", 0))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IN_PROD:
