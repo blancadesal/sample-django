@@ -36,8 +36,19 @@ This assumes you have previously created a tool in Toolforge with the name `djan
 
 ### Deploy
 
-When the build has finished successfully, it's time to deploy:
+When the build has finished successfully, it's time to deploy. We will first set up the environment variables, then start the webservice.
+
+#### Set up environment variables
+
+1. For each environment variable needed in production, run the following command:
+    `toolforge envvars create <NAME> <VALUE>`
+2. Check that the environment variables exist:
+    `toolforge envvars list`
+
+You can also change the variables once the webservice is running, but you will have to restart it manually for the changes to take effect.
+
+#### Start the webservice
 
 1. `toolforge webservice buildservice start`
-2. Wait for the webservice to spin up, then check the logs to see if everything went ok: `toolforge webservice logs`
-3. Navigate to <https://app-name.toolforge.org/polls/> to verify the application is working as expected
+2. Wait for the webservice to spin up, then check the logs to see if everything went ok: `toolforge webservice logs -f`
+3. Navigate to <https://app-name.toolforge.org/polls/> to verify the application is working as expected.
