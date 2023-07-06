@@ -15,8 +15,9 @@ Rememeber to change the settings in mysite/settings.py
     `pip install -r requirements.txt`
 4. Make sure these environment variables are available to the application via your preferred method:
     * [DJANGO_SECRET_KEY](https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECRET_KEY)
-    * PROD: 0 for dev, 1 for prod
-    If you save these variables to a file, make sure to add it to your .gitignore.
+    * PROD: 0 for development, 1 for production
+
+    If you save these variables to a file, make sure to add it to your `.gitignore`.
 5. Run the migrations:
     `python manage.py migrate`
     This will create a `db.sqlite3` file in the project root
