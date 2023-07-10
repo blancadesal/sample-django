@@ -47,8 +47,21 @@ When the build has finished successfully, it's time to deploy. We will first set
 
 You can also change the variables once the webservice is running, but you will have to restart it manually for the changes to take effect.
 
+#### Apply DB migrations
+
+The sqlite database will be created in the tool's home directory (`/data/project/<tool-name>`).
+The application has access to this dir at runtime.
+
+To apply the migrations, run:
+`toolforge jobs run --image tool-<tool-name>/tool-<tool-name>:latest --command "migrate" --no-filelog --wait migrate`
+
+This uses the Toolforge jobs framework.
+The 'migrate' after `--command` refers to the `migrate` process in the `Procfile` and runs `python manage.py migrate`.
+
 #### Start the webservice
 
 1. `toolforge webservice buildservice start`
 2. Wait for the webservice to spin up, then check the logs to see if everything went ok: `toolforge webservice logs -f`
 3. Navigate to <https://app-name.toolforge.org/polls/> to verify the application is working as expected.
+You will see a page with the text "No polls are available".
+This is expected, as the db starts out empty.
